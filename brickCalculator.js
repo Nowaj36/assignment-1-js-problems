@@ -1,33 +1,24 @@
+let brickFirstFloor = 15;
+let brickSecondFloor =12;
+let birckRemaingFloor = 10;
+let bricksPerFeet = 1000;
 function brickCalculator(floor) {
-   const brickFristTenFloof = 15;
-   const brickSecondTenFloof = 12;
-   const brickHeighestRest = 10;
-   const remainingFloor = floor - 20; 
-   const bricksPerFeet = 1000;
-
-   if(floor < 0 || floor == 0) {
-     return -1;
-   }
-   else if(remainingFloor < 0 || remainingFloor == 0) {
-     let remainingAfterFloor = floor - 10;
-     if(remainingAfterFloor < 0 || remainingAfterFloor == 0){
-          let bricks = brickFristTenFloof * bricksPerFeet * floor;
-          return bricks;
+     if(floor <= 10) {
+          bricks = bricksPerFeet * brickFirstFloor * floor;
+     }
+     else if(floor <=20) {
+          let bricksFirstPart = bricksPerFeet * brickFirstFloor * 10;
+          let bricksRemaining = floor - 10;
+          let bricksRemainingPart = bricksPerFeet * brickSecondFloor * bricksRemaining;
+          bricks = bricksFirstPart + bricksRemainingPart;
      }
      else {
-          let bricksForFristTenFloor = brickFristTenFloof * bricksPerFeet * 10;
-          let bricksForRemainingFloor = brickSecondTenFloof * bricksPerFeet * remainingAfterFloor;
-          bricks = bricksForFristTenFloor + bricksForRemainingFloor;
-          return bricks;
+          let bricksRemaining = floor - 20;
+          let bricksFirstPart = bricksPerFeet * brickFirstFloor * 10;
+          let bricksSecondPart = bricksPerFeet * brickSecondFloor * 10;
+          let bricksRemainingPart = bricksPerFeet * birckRemaingFloor * bricksRemaining;
+          bricks = bricksFirstPart + bricksSecondPart + bricksRemainingPart;
      }
-   }
-   else {
-          let bricksForFristTenFloor = brickFristTenFloof * bricksPerFeet * 10;
-          let bricksForSecondTenFloor = brickSecondTenFloof * bricksPerFeet * 10;
-          let bricksForRemainingFloor = brickHeighestRest * bricksPerFeet * remainingFloor;
-          bricks = bricksForFristTenFloor + bricksForSecondTenFloor + bricksForRemainingFloor;
-          return bricks;
-   }
+     return bricks;
 }
-   
 console.log(brickCalculator(21));
